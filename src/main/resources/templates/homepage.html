@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+    }
+
+    .header {
+        background-color: #28a745;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header .profile-logout {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .header .profile-logout form {
+        display: inline-block;
+    }
+
+    .header .profile-logout button {
+        color: white;
+        background-color: #28a745;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .header .profile-logout button:hover {
+        background-color: #218838;
+    }
+
+    .container {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .left-panel, .right-panel {
+        background-color: #ffffff;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .right-panel {
+        flex: 1;
+    }
+
+    .about-section {
+        margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Header with Dashboard, Profile, Logout Buttons -->
+<div class="header">
+  <div>
+    <span>Welcome to the Book Shop</span>
+  </div>
+  <div class="profile-logout">
+    <!-- Dashboard Button -->
+    <form action="/dashboard" method="get">
+      <button type="submit">Dashboard</button>
+    </form>
+
+    <!-- Profile Button -->
+    <form action="/profile" method="post">
+      <button type="submit">Profile</button>
+    </form>
+
+    <!-- Logout Button -->
+    <form action="/logout" method="post">
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+</div>
+
+<!-- Main Container with Left and Right Panels -->
+<div class="container">
+  <!-- Left Panel with Welcome Message -->
+  <div class="left-panel">
+    <h2>Welcome to Our Book Shop</h2>
+    <p>We are delighted to have you here! Browse our wide selection of books available for purchase.</p>
+  </div>
+
+  <!-- Right Panel with Project About Information -->
+  <div class="right-panel">
+    <h2>About This Project</h2>
+    <div class="about-section">
+      <p>This is an online book shop application designed to allow users to browse and purchase books. It includes features like user authentication, a book listing with details, and a profile page to manage user information. The project utilizes modern technologies such as Spring Boot for the backend and Thymeleaf for rendering HTML templates.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

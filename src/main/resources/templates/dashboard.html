@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #28a745;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .profile-logout {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header .profile-logout a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .header .profile-logout a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .left-panel {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-panel {
+            flex: 3;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .book-table th, .book-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .book-table th {
+            background-color: #f1f1f1;
+        }
+
+        .book-table td {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header with Profile, Logout, and Home Buttons -->
+<div class="header">
+    <div>
+        <span>Welcome to the Book Shop</span>
+    </div>
+    <div class="profile-logout">
+        <!-- Dashboard Button -->
+        <form action="dashboard" method="get">
+            <button type="submit">Dashboard</button>
+        </form>
+
+        <!-- Profile Button -->
+        <form action="/profile" method="post">
+            <button type="submit">Profile</button>
+        </form>
+
+        <!-- Logout Button -->
+        <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+
+<!-- Main Container with Left and Right Panels -->
+<div class="container">
+    <!-- Left Panel with User Information -->
+    <div class="left-panel">
+        <h2>Welcome, <span th:text="${username}"></span></h2>
+        <p>Your role: <span th:text="${role}"></span></p>
+    </div>
+
+    <!-- Right Panel with Book List -->
+    <div class="right-panel">
+        <h2>Books Available</h2>
+        <table class="book-table">
+            <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Available Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.bookId}"></td>
+                <td th:text="${book.bookName}"></td>
+                <td th:text="${book.bookAuthor}"></td>
+                <td th:text="${book.price}"></td>
+                <td th:text="${book.bookCount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
